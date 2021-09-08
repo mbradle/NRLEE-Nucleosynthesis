@@ -7,7 +7,7 @@ file *input/expl/run.rsp* to set the parameters for the single-zone
 calculations.  Once those steps are done, execute the code by typing,
 for example:
 
-**./runs.sh input/example_input.xml**
+**./runs.sh model1 input/example_input.xml 1.e6 1.e10 201 14 0.1**
 
 The output will be in the user-defined directory and model subdirectory.
 The script will also create a gzipped tarball in the output directory.
@@ -15,6 +15,6 @@ The script will also create a gzipped tarball in the output directory.
 The directory also includes a *pbs* script.  If your system supports this,
 you can run
 
-**qsub -v input_file=input/example_input.xml job.pbs**
+**qsub -v model=model1,input_file=input/example_input.xml,rho_low=1.e06,rho_high=1.e10,n_runs=201,t9_p=14,tau=0.1 job.pbs**
 
 Of course you can edit the scripts according to your purposes.

@@ -1,5 +1,5 @@
 --network_xml ../../nucnet-tools-code/data_pub/my_net.xml
 --zone_xpath "[last()]"
---tau 0.1
 --t_end 1.e2
 --nuc_xpath "[z <= 92]"
+--xml_steps 10

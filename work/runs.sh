@@ -34,19 +34,26 @@ cd ..
 # Set key data
 
 out_dir=output
-model=model1
-
-rho_low=1.e6
-rho_high=1.e10
-n_runs=201
-t9_p=14
+model=$1
 
 # Create output and store input.
 
 output=${out_dir}/${model}
 
 mkdir -p ${output}
-cp $1 ${output}/input.xml
+cp $2 ${output}/input.xml
+
+rho_low=$3
+rho_high=$4
+n_runs=$5
+t9_p=$6
+tau=$7
+
+# Record the execution command and data
+
+echo ./run.sh ${output} ${rho_low} ${rho_high} ${n_runs} ${t9_p} ${tau} > ${output}/execute.txt
+
+cp input/expl/run.rsp ${output}
 
 # Run the explosion
 
@@ -54,16 +61,11 @@ cd input/expl
 
 mkdir -p txt
 
-echo ${rho_low} > txt/rho_1.txt
-echo ${rho_high} > txt/rho_2.txt
-echo ${n_runs} > txt/n.txt
-echo ${t9_p}  > txt/t9_p.txt
-
-./run.sh ${output}
+./run.sh ${output} ${rho_low} ${rho_high} ${n_runs} ${t9_p} ${tau}
 
 # Tar and zip model
 
 cd ../..
 cd ${out_dir}
-tar cvf ${model}.tar ${model}/full.xml ${model}/runs ${model}/zones ${model}/input.xml
+tar cvf ${model}.tar ${model}/full.xml ${model}/runs ${model}/zones ${model}/input.xml ${model}/run.rsp ${model}/exec.txt
 gzip ${model}.tar
