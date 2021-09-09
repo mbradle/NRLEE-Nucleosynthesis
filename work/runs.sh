@@ -135,7 +135,7 @@ cp ${input_file} ${output}/input.xml
 
 # Record the execution command and data
 
-echo ./runs.sh --model ${model1} --input_file ${input_file} --rho_low ${rho_low} --rho_high ${rho_high} --n_runs ${n_runs}  --t9_p ${t9_p} --tau ${tau} > ${output}/execute.txt
+echo ./runs.sh --model ${model} --input_file ${input_file} --rho_low ${rho_low} --rho_high ${rho_high} --n_runs ${n_runs}  --t9_p ${t9_p} --tau ${tau} > ${output}/execute.txt
 
 cp input/expl/run.rsp ${output}
 
