@@ -1,3 +1,94 @@
+margs=7
+
+function example {
+    echo -e "example: $0 --model model1 --input_file input/example_input.xml --rho_low 1.e6 --rho_high 1.e10 --n_runs 201 --t9_p 14 --tau 0.1\n"
+}
+
+function usage {
+    echo -e "usage: $0 MANDATORY [OPTION]\n"
+}
+
+function help {
+  usage
+    echo -e "MANDATORY:"
+    echo -e "  --model  VAL  The output subdirectory"
+    echo -e "  --input_file  VAL  The input XML file"
+    echo -e "  --rho_low  VAL  The lower limit on the density"
+    echo -e "  --rho_high VAL  The upper limit on the density"
+    echo -e "  --n_runs VAL  The number of logarithmically spaced runs in density"
+    echo -e "  --t9_p VAL  The peak t9 at the maximum density"
+    echo -e "  --tau VAL  The density expansion e-folding timescale"
+    echo -e "OPTION:"
+    echo -e "  -h, --help  Prints this help\n"
+  example
+}
+
+function margs_precheck {
+	if [ $2 ] && [ $1 -lt $margs ]; then
+		if [ $2 == "--help" ] || [ $2 == "-h" ]; then
+			help
+			exit
+		else
+	    	usage
+			example
+	    	exit 1 # error
+		fi
+	fi
+}
+
+function margs_check {
+	if [ $# -lt $margs ]; then
+	    usage
+	  	example
+	    exit 1 # error
+	fi
+}
+
+margs_precheck $# $1
+
+# Args while-loop
+
+while [ "$1" != "" ];
+do
+   case $1 in
+   --model )  shift
+              model=$1
+              ;;
+   --input_file )  shift
+              input_file=$1
+              ;;
+   --rho_low )  shift
+              rho_low=$1
+              ;;
+   --rho_high )  shift
+              rho_high=$1
+              ;;
+   --n_runs )  shift
+              n_runs=$1
+              ;;
+   --t9_p  )  shift
+              t9_p=$1
+              ;;
+   --tau  )  shift
+              tau=$1
+              ;;
+   -h   | --help )        help
+                          exit
+                          ;;
+   *)                     
+                          echo "$script: illegal option $1"
+                          usage
+						  example
+						  exit 1 # error
+                          ;;
+    esac
+    shift
+done
+
+# Mandatory paramter check
+
+margs_check ${model} ${input_file} ${rho_low} ${rho_high} ${n_runs} ${t9_p} ${tau}
+
 # Clone the necessary codes.
 
 if [[ ! -d wn_user ]]
@@ -34,24 +125,17 @@ cd ..
 # Set key data
 
 out_dir=output
-model=$1
 
 # Create output and store input.
 
 output=${out_dir}/${model}
 
 mkdir -p ${output}
-cp $2 ${output}/input.xml
-
-rho_low=$3
-rho_high=$4
-n_runs=$5
-t9_p=$6
-tau=$7
+cp ${input_file} ${output}/input.xml
 
 # Record the execution command and data
 
-echo ./run.sh ${output} ${rho_low} ${rho_high} ${n_runs} ${t9_p} ${tau} > ${output}/execute.txt
+echo ./runs.sh --model ${model1} --input_file ${input_file} --rho_low ${rho_low} --rho_high ${rho_high} --n_runs ${n_runs}  --t9_p ${t9_p} --tau ${tau} > ${output}/execute.txt
 
 cp input/expl/run.rsp ${output}
 
@@ -67,5 +151,5 @@ mkdir -p txt
 
 cd ../..
 cd ${out_dir}
-tar cvf ${model}.tar ${model}/full.xml ${model}/runs ${model}/zones ${model}/input.xml ${model}/run.rsp ${model}/exec.txt
+tar cvf ${model}.tar ${model}/full.xml ${model}/runs ${model}/zones ${model}/input.xml ${model}/run.rsp ${model}/execute.txt
 gzip ${model}.tar

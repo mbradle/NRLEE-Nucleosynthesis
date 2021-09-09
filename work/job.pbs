@@ -6,4 +6,4 @@
 #PBS -j oe
 
 cd $PBS_O_WORKDIR
-./runs.sh ${model} ${input_file} ${rho_low} ${rho_high} ${n_runs} ${t9_p} ${tau}
+./runs.sh --model ${model} --input_file ${input_file} --rho_low ${rho_low} --rho_high ${rho_high} --n_runs ${n_runs}  --t9_p ${t9_p} --tau ${tau}
