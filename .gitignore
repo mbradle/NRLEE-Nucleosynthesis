@@ -1,5 +1,6 @@
 input*
 data_pub*
+model*
 .ipynb*
 *.txt
 *.xml
