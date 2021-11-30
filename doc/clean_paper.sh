@@ -1,0 +1,15 @@
+rm -f *.4ct
+rm -f *.css
+rm -f *.idv
+rm -f *.4tc
+rm -f *.dvi
+rm -f *.lg
+rm -f *.tmp
+rm -f *.aux
+rm -f *.html
+rm -f *.log
+rm -f *.xref
+rm -f *.pdf
+rm -f *.bbl
+rm -f *.blg
+rm -f *.bak

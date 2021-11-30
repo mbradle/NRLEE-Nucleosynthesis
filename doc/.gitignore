@@ -1,0 +1,12 @@
+figures
+models
+.DS*
+.DS_Store
+../.DS_Store
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*Notes.bib
