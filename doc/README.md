@@ -8,6 +8,8 @@ type
 
 **./make_paper.sh**
 
+The output will be the file *nrlee-nucleosynthesis.pdf*.
+
 To clean up the directory, type
 
 **./clean_paper.sh**
