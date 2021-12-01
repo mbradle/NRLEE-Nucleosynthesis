@@ -1,0 +1,764 @@
+\documentclass[preprint]{revtex4-2}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{comment}
+\graphicspath{{figures/}}
+\newcommand{\aap}{Astron. Ap.}
+\newcommand{\apjs}{Astrophys. J. Suppl.}
+\newcommand{\gca}{Geochim. Cosmochim. Acta}
+\newcommand{\epsl}{Earth Planet. Sci. Lett.}
+
+\begin{document}
+
+\title{NRLEE Nucleosynthesis\footnote{Supplemental material for the paper
+{\it Constraints on the building blocks of the Solar System: Insights from nucleosynthetic isotope anomalies}, GCA (2021), authors: K. Bermingham,
+B. S. Meyer, and K. Mezger, submitted}}
+\author{Bradley S. Meyer}
+\affiliation{Department of Physics and Astronomy, Clemson University, Clemson,
+SC 29634, USA}
+\author{Katherine R. Bermingham}
+\affiliation{ Department of Earth and Planetary Sciences, Rutgers University, Piscataway, NJ 08854, USA}
+\author{Klaus Mezger}
+\affiliation{Institut f\"ur Geologie, Baltzerstrasse 1+3 3012 Bern, Schweiz}
+
+\begin{abstract}
+A simple, one-dimensional model of the explosion of a dense white dwarf star
+is presented to illustrate the nucleosynthesis that could occur in
+such events.
+The initial composition of the white dwarf star
+was taken to be solar abundances evolved through helium burning to model
+the nuclear evolution to a carbon and oxygen white dwarf star composition.
+This composition is then
+subjected to an exponential distribution of neutron exposures with average
+exposure $\tau_0 = 0.3\ mb^{-1}$ to model the s processing that would occur
+during helium shell burning.
+Single-zone nuclear reaction network calculations
+were performed on that initial composition over
+range of initial densities that were then taken to expand
+and cool exponentially.  The calculations included electron-capture reactions
+using a simple but realistic parameterization of those rates.  The results
+of those calculations were converted into a white dwarf model by applying
+solutions to the Lane-Emden equation to map initial densities into interior
+mass coordinates in the star.  Mass fractions of resulting
+cosmochemically interesting species are presented as a function of interior
+mass.  The results show that in the inner, dense regions of the white dwarf star
+the initial carbon and oxygen present is converted into neutron-rich iron-group
+species like $^{48}$Ca and $^{50}$Ti.  In the outer, less dense regions,
+the initial carbon and oxygen are not completely destroyed and a neutron burst
+can produce interesting isotopes like $^{96}$Zr.  In between these layers,
+oxygen burning produces substantial overabundances of $^{46}$Ti and $^{84}$Sr.
+Readers may explore the results of this model in more detail via Jupyter
+notebooks available at \url{http://webnucleo.org}.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Correlated isotopic anomalies in a variety of elements, but especially
+in the neutron-rich isotopes of iron-group species like $^{48}$Ca, in planetary
+materials appear to call for co-production of those species in a special
+astrophysical environment.  This environment is not yet well-characterized,
+but, 
+because the nucleosynthesis of $^{48}$Ca
+occurs in freezeouts from low-entropy, neutron-rich quasistatistical equilibrium
+\cite{1996ApJ...462..825M}, it may generically be termed a NRLEE
+(a Neutron-Rich, Low-Entropy Ejector) \cite{Bermingham2021}.  A plausible
+NRLEE is a thermonuclear electron-capture supernova, which is the explosion
+of a dense white dwarf star \cite{2019A&A...622A..74J}.  Since such models
+are not yet well studied, it is useful to present some details of
+nucleosynthesis in a NRLEE via a simple model.  That is the purpose of the
+present brief paper.
+
+\section{Initial Model} \label{sec:initial}
+
+The initial composition of the NRLEE model was taken to be the ashes of
+stellar helium burning enhanced by s-process nucleosynthesis, as would be
+expected to occur in helium burning shells in the star during its
+Asymptotic-Giant Branch phase.  The Webnucleo {\it mainline-nucleosynthesis}
+project (\url{https://github.com/mbradle/mainline-nucleosynthesis}) was
+used to compute the nucleosynthesis in the main stellar burning phases of
+a star starting from initial Solar composition \cite{2003ApJ...591.1220L}.
+The present model employed the default project conditions for hydrogen burning
+(constant temperature $T = 2.5\times 10^7$ K, mass density $\rho = 15$ g/cc,
+and a duration of 10 Myr years) and helium burning
+($T = 2.5\times 10^8$K, $\rho = 1500$ g/cc, and a duration of 10,000 years).
+All calculations used the Webnucleo Reaclib V2.2 XML data
+(\url{https://osf.io/5cyg7/}) created from the JINA Reaclib database
+(\url{https://reaclib.jinaweb.org}).
+The hydrogen burning converted $^1$H into $^4$He and the initial C, N, and O
+abundances predominantly into $^{14}$N by CNO cycling.  The helium burning
+converted $^4$He into $^{12}$C and $^{16}$O and the $^{14}$N into $^{22}$Ne.
+Some s processing occurred by release of neutrons due to reactions like
+$^{22}$Ne$(\alpha,n)^{25}$Mg during helium burning.  The resulting abundances
+per nucleon as a function of mass number are shown in
+Fig. \ref{fig:ys_fig} in the curve labeled {\it He burning}.
+
+During helium shell burning in the asymptotic-giant branch phase,
+the material experiences s-process nucleosynthesis in a series of
+pulses.  Each pulse subjects the matter to a flux of neutrons characterized
+by the neutron exposure $\tau$, which is the number of neutrons passing
+through an area over some time interval and is conveniently expressed in
+inverse millibarns ($mb^{-1}$).  Over the course of many shell pulses, the
+matter is subjected to a distribution of neutron exposures $\rho(\tau)$.
+In the present model, the Webnucleo {\it simple\_s\_process} project
+(\url{https://github.com/mbradle/simple_s_process}) was used to expose
+the helium burning composition computed as described above to a range of
+neutron exposures.  Specifically, the calculation held the initial
+helium burning composition at constant temperature $T = 2.5 \times 10^8$ K,
+mass density $\rho = 1000$ g/cc, and neutron number density $1.e8$ per cc
+for $10^5$ years.  The calculation kept track of the neutron exposure at
+each step.  The resulting abundances were then averaged over a distribution
+of exposures
+\begin{equation}
+\rho(\tau) = \frac{1}{\tau_0} e^{-\tau/\tau_0}
+\label{eq:rho_exposure}
+\end{equation}
+with an average exposure $\tau_0 = 0.3\ mb^{-1}$.  Such an average exposure
+gives abundances that approximate well the Solar System's s-process
+abundances (e.g., \cite{1974ApJ...193..397C}).  The resulting abundances
+are also shown in Fig. \ref{fig:ys_fig}.  The s processing significantly
+enhanced the abundance of nuclei above the iron peak.  Alpha decays of
+bismuth and polonium isotopes at the end point of the s process contributed
+to the fairly high abundance of $^4$He.
+
+\section{Explosive Nucleosynthesis} \label{sec:expl}
+
+The nucleosynthesis in the exploding white dwarf star was modeled with
+the Webnucleo {\it NRLEE-Nucleosynthesis} project
+(\url{https://github.com/mbradle/NRLEE-Nucleosynthesis}).  The initial
+composition was that
+from the distribution of neutron exposures computed as in \S \ref{sec:initial},
+and a series of single-zone network calculations at initial mass densities
+$\rho_0$ ranging from $10^6$ g/cc to $10^{10}$ g/cc were performed.
+Each initial density
+corresponds to a zone in the star.  The initial temperature
+$T_9 = T / 10^9$ K
+for each zone was taken to be
+\begin{equation}
+T_9 = 14 \left(\frac{\rho_0}{10^{10}\ \rm{g/cc}}\right)^{1/3}
+\label{eq:t9_0}
+\end{equation}
+Fig. \ref{fig:t9_vs_rho} shows the initial temperature as a function of
+initial mass density.  The matter was taken to expand exponentially on
+a timescale $\tau$ such that the mass density $\rho(t)$ as a function of
+time behaved as
+\begin{equation}
+\rho(t) = \rho_0 e^{-t / \tau}
+\label{eq:rho_t}
+\end{equation}
+The temperature was taken to behave a $\rho \propto T^3$ and the expansions
+were followed for 100 seconds.
+
+For the purposes of understanding the evolving neutron richness of the
+abundances during the explosive nucleosynthesis, the Reaclib V2.2
+reaction rates were supplemented by a simple but realistic
+weak-rate parameterization \cite{2010A&A...522A..25A}.  Those weak rates
+included electron-capture rates on all nuclei if energetically favorable.
+The electron-capture rates are fastest at high density where the density
+of free electrons is high.  Fig. \ref{fig:ye_vs_time} shows the electron
+fraction $Y_e$ in the zone with initial mass density $7.59 \times 10^9$ g/cc.
+The electron fraction is the net number of electrons per nucleon in the system.
+For charge neutral matter, this is then the fraction of all nucleons that
+are protons.  In this zone, the matter starts with nearly equal numbers of
+neutrons and protons.  
+The density in this zone
+is sufficiently high the significant electron capture occurs during the
+expansion and drives down $Y_e$.  The slower the expansion, the greater
+the electron capture.  For the slower expansion, $Y_e$ drops to a minimum
+value and then, owing to the shifting abundances, beta-decay reactions
+occur and cause an increase of $Y_e$ again.
+
+Fig. \ref{fig:ye_vs_rho} shows the final $Y_e$ in the different zones
+(indicated by their initial density).
+For the lower density zones, little electron capture
+occurs, and $Y_e$ is unchanged from the initial value, which is slightly
+below $Y_e = 0.5$ owing to beta decays during hydrogen and helium burning
+and s processing.  For the higher
+density zones, significant electron capture occurs and leaves the
+material significantly neutron rich.  Slower expansion allows for more
+electron capture and, hence, more neutron-rich matter.
+It is worth noting that the $Y_e$ of $^{48}$Ca is 20/48 = 0.42, so the
+$Y_e$ values reached in the highest density zones reach values near those
+to produce this isotope.
+
+Fig. \ref{fig:c_o_ne_mg_si_vs_rho} shows the final mass fractions (grams 
+of the species per total gram of the material) of
+$^{12}$C, $^{16}$O, $^{20}$Ne, $^{24}$Mg, and $^{28}$Si in the different
+zones.
+For low initial density, the peak temperature is not
+high enough to burn much of the initial carbon and oxygen except to 
+convert a small amount of the oxygen to neon.  At higher
+density, the carbon and even some oxygen burn during explosive carbon
+burning, which produces $^{20}$Ne and $^{24}$Mg.  At higher initial density
+and peak temperature, the burning proceeds through explosive carbon and
+neon burning.  At still higher initial density and peak temperature,
+the burning progresses through oxygen burning.  This leaves an abundance
+of $^{28}$Si and heavier isotopes.  Finally, at still higher temperatures
+and density, the burning proceeds all the way through silicon burning
+and produces the iron-group isotopes.
+
+In the higher initial density zones, the temperature and density are high
+enough to burn matter to iron-group species.  Fig. \ref{fig:inner_x_vs_time}
+shows the mass fractions of several species as a function of time
+in the zone with initial mass density $7.59 \times 10^9$ g/cc for the
+$\tau = 0.1$ s expansion.
+Due to the high temperature and density, the
+initial carbon and oxygen in the zone transform within about $10^{-12}$
+seconds into a nuclear statistical equilibrium dominated by neutrons,
+protons, and $^4$He nuclei.  Nevertheless, heavier species are also
+present in relatively large abundance due to the low entropy.
+Around $10^{-3}$ seconds into the explosion, the electron-capture
+reactions start decreasing the $Y_e$, which favors the build up of
+neutron-rich species, like $^{50}$Ti.  The density (and temperature)
+start to decline rapidly starting around $10^{-2}$ seconds; hence,
+it is favorable for the light particles to assemble into heavier species.
+At late time, the abundances freeze out except for the decay of
+radioactive species.
+
+In the lower-density zones, leftover $^{22}$Ne from helium burning can provide
+neutrons during the explosive nucleosynthesis.  Fig. \ref{fig:n_n_vs_time}
+shows the neutron number density as a function of time in the zone with
+initial mass density $7.59 \times 10^6$ g/cc for the $\tau = 0.1$ s expansion.
+A number of reactions, but particularly
+$^{22}$Ne$(\alpha, n)^{25}$Mg release neutrons during the explosion.
+This leads to a sudden, large flux of neutrons.
+
+The burst of neutrons in lower-density zones can significantly modify the
+initial abundances during the explosion.  Fig. \ref{fig:zr_vs_time}
+shows the evolution of the zirconium mass fractions
+in the zone with initial mass density $7.59 \times 10^6$ g/cc for the
+$\tau = 0.1$ s expansion.
+The sudden burst of neutrons causes the zirconium
+isotopes to capture neutrons rapidly.  The initially relatively small
+abundance of $^{96}$Zr rapidly builds up from $^{90}$Zr and the other
+zirconium isotopes \cite{2011ApJ...739...93T}.
+It is worth noting that the s-process nucleosynthesis
+that occurred prior to the explosion significantly enhanced the zirconium
+abundances (see Fig. \ref{fig:ys_fig}).
+
+The final mass fractions of species as a function of initial density vary
+owing to the different conditions experienced during the explosive
+nucleosynthesis.  Fig. \ref{fig:ti_vs_rho} shows the final titanium
+mass fractions as a function of the initial mass density for the $\tau = 0.1$
+s expansions.
+The high mass fraction
+of $^{46}$Ti is noteworthy near initial density of $10^8$ g/cc.  It arises
+because the explosive oxygen burning in that region occurs in slightly
+neutron-rich conditions, which favors $^{46}$Ti over $^{44}$Ti in the
+nuclear flows \cite{1973ApJS...26..231W}.
+The figure includes the abundant $^{48}$Cr present
+because that species decays to $^{48}$Ti.
+
+\section{White Dwarf Model} \label{sec:polytrope}
+
+The calculations in \S \ref{sec:expl} are useful in delineating the 
+varying yields that could result in conditions relevant to NRLEE
+nucleosynthesis.  It is helpful, however, for understanding the physical
+setting of this nucleosynthesis to express those results in the context
+of a white dwarf star model.  It is possible to do this
+through the use of a polytrope model
+(e. g., \cite{1984psen.book.....C}).
+For a spherically symmetric star, the mass-continuity equation reads
+\begin{equation}
+\frac{dM_r}{dr} = 4 \pi r^2 \rho
+\label{eq:continuity}
+\end{equation}
+where $r$ is the radial coordinate, $\rho$ is the mass density, and
+$M_r$ is the enclosed mass (the mass contained within a sphere of radius $r$).
+For a spherically symmetric star in hydrostatic equilibrium, the
+pressure gradient force balances gravity such that
+\begin{equation}
+\frac{dP}{dr} = -\frac{G M_r\rho}{r^2}
+\label{eq:hydro}
+\end{equation}
+where $P$ is the pressure and $G$ is Newton's constant.
+
+To construct a polytrope, one uses a polytropic equation of state,
+which is given by
+\begin{equation}
+P = K \rho^{(n+1)/n}
+\label{eq:polytrope}
+\end{equation}
+with $K$ a constant.  The density can be defined in terms of a function
+$\theta(\xi)$ such that
+\begin{equation}
+\rho = \rho_c \theta^n
+\label{eq:rho}
+\end{equation}
+where $\rho_c$ is the central density and $n$ is the polytropic index.
+Eqs. (\ref{eq:continuity}), (\ref{eq:hydro}), (\ref{eq:polytrope}),
+and (\ref{eq:rho}) can be combined to yield the Lane-Emden equation
+\begin{equation}
+\frac{1}{\xi^2} \frac{d}{d\xi}\left(\xi^2\frac{d\theta}{d\xi}\right)
++ \theta^n = 0
+\label{eq:lane-emden}
+\end{equation}
+where
+\begin{equation}
+r = a \xi
+\label{eq:r_xi}
+\end{equation}
+and
+\begin{equation}
+a^2 = \frac{(n + 1)K\rho_c^{\frac{1}{n} - 1}}{4\pi G}
+\label{eq:a}
+\end{equation}
+With a choice of $n$ (allowed values are $0 \leq n \leq 5$), one solves
+Eq. (\ref{eq:lane-emden}) for $\theta(\xi)$.
+
+The total radius of the polytrope model is given by $R = a \xi_1$,
+where $\xi_1$ is the first root of $\theta$ such that $\theta(\xi_1) = 0$.
+The mass of the polytrope model out to coordinate $\xi$ is found by
+using Eq. (\ref{eq:lane-emden}) to
+integrate Eq. (\ref{eq:continuity}) to obtain
+\begin{equation}
+M(\xi) = -4 \pi a^3\rho_c \xi^2 \frac{d\theta}{d\xi}
+\label{eq:m_xi}
+\end{equation}
+with the total mass given by ${\cal M} = M(\xi_1)$.  Choice of $n$,
+a total mass $\cal{M}$, and central density $\rho_c$ then determines $a$ and
+$r$ as a function of $\xi$, and, thus, the density
+and mass as a function of $r$.  In this way, one can obtain the enclosed
+mass coordinate $M_r = M(r)$ as a function of density $\rho$.
+Since a NRLEE is expected to be the explosion of a dense white dwarf star
+with mass near the the Chandrasekhar mass, appropriate choices are
+${\cal M} = 1.4\ M_\odot$ ($M_\odot$ is one Solar mass) and $n = 3$ (since
+the Chandrasekhar limit is when nearly all the degenerate electrons 
+providing the pressure support are relativistic).  If one then chooses
+a central density $\rho_c = 10^{10}$ g/cc, a reasonable value for such a
+dense white dwarf star, the run of density with enclosed mass is that shown
+in Fig. \ref{fig:rho_vs_mr}.
+
+With the mapping between the density and enclosed mass now available, one
+can simply convert other quantities from dependence on initial density to
+enclosed mass.  Fig. \ref{fig:t9_vs_mr} shows the peak temperature in the
+explosion as a function of enclosed mass.  The highest peak temperature is
+reached at the center of the exploding star and decreases outward.  It is
+important to note that, in a real star, the explosion is a dynamical
+event such that release of energy
+in one part of the star causes the
+various stellar layers to respond by heating up and expanding.  This means
+that various stellar zones do not reach their peak temperatures at the same
+time.  The present model does not capture those complex dynamics
+since the layers are taken to heat up and expand independently.  Nevertheless,
+since the explosion occurs quickly compared to the timescale to significantly
+change the structure of the star, the present treatment gives a fair
+approximation of the real explosion, at least in one dimension.
+
+Fig. \ref{fig:ye_vs_mr} shows the final $Y_e$ immediately after the
+explosion as a function of the enclosed mass coordinate.  This is a mapping
+of Fig. \ref{fig:ye_vs_rho} from initial density to enclosed mass.
+As expected, the inner regions of the white dwarf are densest and experience
+the most neutron capture.  Also, the slower the explosion (the slower the
+expansion), the more neutron-rich the matter becomes.
+
+Fig. \ref{fig:ti_c_o_vs_mr} shows the mass fractions of the titanium 
+and $^{12}$C and $^{16}$O immediately after the explosion.  The figure is
+for the $\tau = 0.1$ s expansion, as are all subsequent figures plotting
+a quantity vs. enclosed mass.  The unburned
+or slightly burned carbon and oxygen are in the zones that attained the
+lowest peak temperatures.  In the present model, these are in the outer
+few tenths of a Solar mass of the exploded star.
+The inner layers of the star are dominated by
+neutron-rich $^{50}$Ti.  The $^{46}$Ti-rich layers are in the oxygen-rich,
+outer parts of the star.
+
+For understanding the relevance of the nucleosynthesis in the NRLEE for
+cosmochemistry, it is helpful to plot the overabundances instead of mass
+fraction.  The overabundance of a species is its mass fraction in a
+nucleosynthetic environment relative to its mass fraction in the Solar System.
+Thus, since the mass fraction can be labeled $X$, the overabundance is
+labeled $X / X_\odot$.  Fig. \ref{fig:ti_over_vs_mr} shows the titanium
+overabundances in the simple polytrope model.
+Zones with huge overabundances of $^{50}$Ti are present in the
+inner parts of the exploded star.   Zones with significant overabundances
+of $^{46}$Ti are present in the outer, oxygen-rich regions of the star.
+The $^{48}$Cr overabundance shown
+is the overabundance in $^{48}$Ti that would be present after all the
+$^{48}$Cr decayed via the chain $^{48}\rm{Cr} \to ^{48}\rm{V} \to ^{48}\rm{Ti}$.
+The half life of $^{48}$Cr is 21.6 hours and that of $^{48}$V is 16 days.
+The ejecta may condense into dust prior to the time for this decay chain
+to run to completion, so the overabundance shown is the maximum one would
+expect in a condensate for the present model.
+It is clear that $^{46}$Ti and $^{50}$Ti overabundances dominate in this
+simple model, which, if they co-condense in the NRLEE outflow, would result
+in carriers with correlated enrichments in these isotopes that could then
+be the source of correlated anomalies in planetary materials
+\cite{2009Sci...324..374T}.
+
+Fig. \ref{fig:ca_over_vs_mr} shows the overabundances of the calcium isotopes
+in the simple polytrope model.
+Zones with huge overabundances of $^{48}$Ca are present in the
+inner parts of the exploded star.   Zones with significant overabundances
+of $^{42}$Ca and $^{46}$Ca  are present in the outer, oxygen-rich regions of
+the star.  If neutron-rich material from the inner part of the exploded
+star indeed mixed out to the oxygen-rich layers to form oxides, one could
+naturally expect correlated $^{48}$Ca and $^{50}$Ti, especially if the
+isotopes condensed in perovskite.
+
+Fig. \ref{fig:cr_over_vs_mr} shows the overabundances of the chromium isotopes
+in the simple polytrope model.
+Zones with huge overabundances of $^{54}$Ca are present in the
+inner parts of the exploded star.  Chromium-50 dominates the overabundance
+over a large mass range outside the $^{54}$Cr-rich region.  Of course,
+one would expect the highly enriched $^{54}$Cr to accompany the 
+abundant $^{48}$Ca and $^{50}$Ti as the inner layers mixed to the outer,
+oxygen-rich layers.
+
+Fig. \ref{fig:fe_over_vs_mr} shows the iron isotopes in the model.
+Inside of the oxygen-rich outer layers, $^{54}$Fe is
+highly overabundant.  Inside of these layers, $^{58}$Fe is highly
+overabundant.
+
+Fig. \ref{fig:ni_over_vs_mr} shows the nickel overabundances in the
+simple polytrope model.
+Isotopes of increasing neutron richness come to dominate
+the overabundances with increasing depth in the exploded star.  Closest
+to the oxygen-rich outer layers is the $^{58}$Ni-rich region.  The proximity
+of this region to the oxygen might lead to nickel bearing condensates
+preferentially enriched in $^{58}$Ni over the other nickel isotopes.
+The figure also shows the $^{60}$Ni overabundance that would result from
+$^{60}$Fe in the innermost layers after that isotope decayed.
+
+The co-existing dominant overabundances of $^{54}$Fe and $^{58}$Ni
+in the interior mass coordinate range $\sim 0.7 - 1.2\ M_\odot$ are
+striking in light of the correlated excesses in these isotopes
+in CC meteorites
+\cite{Hopp2021}.  These isotopes are produced at densities that reach
+$Y_e \approx 0.48$ during the expansion.  This is because
+$Y_e(^{54}{\rm Fe}) = 26 / 54 = 0.4815$ 
+and
+$Y_e(^{58}{\rm Ni}) = 28 / 58 = 0.4828$; thus, at the high temperature
+and density achieved in the explosion, as the fast nuclear reactions
+drive the nuclear abundance distribution into nuclear statistical equilibrium
+(NSE)
+and the weak reactions drive the $Y_e$ to $\sim 0.48$. In the equilibrium,
+the nucleons arrange
+themselves into the nuclei with strongest binding energy per nucleon for
+the given $Y_e$.  The Fe and Ni isotopes dominate the binding energy per nucleon
+and $^{54}$Fe and $^{58}$Ni have the right electron fraction.  The binding
+energy per nucleon of $^{54}$Fe is 8.7362 MeV per nucleon while that of
+$^{58}$Ni is 8.7319 MeV per nucleon.  Fig. \ref{fig:fe_ni_vs_mr}
+shows the final mass fractions of the iron and nickel isotopes in the
+polytrope model.  The slight nuclear binding energy
+advantage of $^{54}$Fe allows it to be more abundant than $^{58}$Ni in
+the freezeout from the NSE.  The system includes a small amount of other
+Fe and Ni isotopes with other $Y_e$ values
+to accommodate the total electron fraction.
+
+Fig. \ref{fig:sr_over_vs_mr_linear} shows the strontium overabundances
+in the simple polytrope model.
+Only the outermost layers of the exploded star are shown
+since the burning destroys all strontium inside of these layers.  The high
+$^{84}$Sr overabundance over a narrow region arises from gamma processing.
+
+Fig. \ref{fig:zr_over_vs_mr_linear} shows the zirconium overabundances
+in the simple polytrope model.
+Only the outermost layers of the exploded star are shown
+since the burning destroys all zirconium inside of these layers.  The
+high $^{96}$Zr in the outermost layers
+arises from the neutron burst processing there
+(see Fig. \ref{fig:zr_vs_time}).
+
+Fig. \ref{fig:mo_over_vs_mr_linear} shows the molybdenum overabundances
+in the simple polytrope model.
+Only the outermost layers of the exploded star are shown
+since the burning destroys all molybdenum inside of these layers.
+The innermost layers are enriched in the p-process isotopes $^{92,94}$Mo
+due to the gamma processing occurring there.  Outside of these layers,
+other Mo isotopes dominate.  Interestingly, nowhere is $^{95}$Mo the most
+overabundant species.  On the other hand, the figure shows that
+$^{95}$Zr ($\tau_{1/2} = 64.0$ days) and $^{95}$Nb ($\tau_{1/2} = 35.0$ days)
+can give a significant overabundance
+in $^{95}$Mo in NRLEE dust after {\it in situ} decay.  It should be
+noted that the approximate weak rates used for the present models
+\cite{2010A&A...522A..25A}
+overestimate the decay rate of $^{95}$Zr, so the overabundance from
+$^{95}$Zr is probably lower than is realistic while that from
+$^{95}$Nb is probably higher than is realistic.  Summing the two overabundances
+in the figure probably gives a good estimate of the resulting $^{95}$Mo
+overabundance if Zr and Nb condense in NRLEE dust.
+Though not shown, $^{96}$Nb would contribute insignificantly to the 
+overabundance of $^{96}$Mo.
+In any case, it is evident that NRLEE dust could carry enrichments
+in $^{94}$Mo and $^{95}$Mo relative to $^{96}$Mo, which could then be
+the source of correlated anomalies in $^{94}$Mo and $^{95}$Mo
+seen in planetary materials \cite{2019NatAs...3..736B}.
+This possibility merits further quantitative work.
+
+\section{Jupyter Notebooks} \label{sec:jupyter}
+
+Readers who wish to study the above results in 
+more detail are encouraged to explore the Jupyter notebooks accompanying
+the Webnucleo projects used to construct the simple NRLEE model presented
+here.  The notebooks allow a user to download and graph data interactively.
+Input parameters can be changed, and figures and tables saved.  The
+notebooks run on Google Colab (\url{https://colab.research.google.com)} or
+Binder (\url{https://mybinder.org}).  They can also be downloaded and run
+on a local computer.
+
+The notebooks relevant for the model presented here are:
+\begin{itemize}
+\item Mainline-nucleosynthesis: \url{https://github.com/mbradle/mainline-nucleosynthesis}
+\item simple\_s\_process: \url{https://github.com/mbradle/simple_s_process}
+\item NRLEE-Nucleosynthesis: \url{https://github.com/mbradle/NRLEE-Nucleosynthesis}  This repository also includes the latex for the present paper and
+instructions for generating it (see the {\it doc/} subdirectory).
+\end{itemize}
+All of these notebooks are part of the Webnucleo Project
+(\url{http://webnucleo.org}).
+
+\section{Conclusion}
+
+A simple, one-dimensional model of a NRLEE (Neutron-Rich Low-Entropy
+Ejector) has been presented.  The model was constructed from independent
+single-zone network calculations that were then stitched together into
+an exploding white-dwarf star model through the use of an $n = 3$, 
+${\cal M} = 1.4\ M_\odot$ polytrope configuration.
+Fig. \ref{fig:nrlee-anatomy} summarizes the NRLEE nucleosynthesis.
+The innermost, densest zones reach the highest temperature and density
+during the explosion.  They experience significantly fast electron-capture
+reactions during the explosion such that the matter becomes neutron rich
+to produce $^{48}$Ca, $^{50}$Ti, and $^{54}$Cr.  Outside those regions,
+less neutron-rich, intermediate mass isotopes are produced.  In even
+lower-density zones, initial oxygen does not completely burn.  In these
+zones, abundant $^{46}$Ti and $^{84}$Sr are produced.  Finally, in the outer
+zones, unburned carbon remains along with isotopes like $^{96}$Zr produced
+by neutron-burst nucleosynthesis.
+
+If the layers of this simple model mix and then condense dust grains, those
+grains may be important contributors to the isotopic anomalies in the
+early Solar System \cite{Bermingham2021}.  For example, the model ejecta
+are significantly enriched in $^{46}$Ti and $^{50}$Ti.  If the layers in the
+ejecta carrying these enrichments mix and then condense, the resulting NRLEE
+dust could be the source of correlated anomalies in these two isotopes in
+Solar System planetary samples.
+
+The present model is obviously extremely simple.  The initial composition
+for the explosion calculations is computed from constant temperature and
+density single-zone calculations and then modified by a schematic treatment
+of the s process that would likely occur during the pre-explosion star's
+shell helium burning phase.  The explosion calculations are independent
+single-zone calculations with initial temperature derived from a simple
+density-temperature scaling and the subsequent dynamics given by a simple
+exponential expansion.  The results are then mapped to a one-dimensional
+white-dwarf star
+model through use of a simple polytrope configuration.  Nevertheless, the
+model gives something of the flavor of what more realistic,
+multi-dimensional  models are likely
+to produce in the future.  Such detailed models are eagerly anticipated!
+
+\bibliography{nrlee-nucleosynthesis}
+
+\begin{figure}
+\includegraphics{ys_fig}
+\caption{The abundances as a function of mass number
+after helium burning in the model (He burning) and after those abundances are
+subjected to an exponential distribution of neutron exposures with average
+exposure of 0.3 $mb^{-1}$.}
+\label{fig:ys_fig}
+\end{figure}
+
+\begin{figure}
+\includegraphics{t9_vs_rho}
+\caption{The peak temperature in the model calculations as a function of
+the initial density. The relationship between the initial density $\rho$
+and peak temperature was taken to be $\rho \propto T_9^3$.}
+\label{fig:t9_vs_rho}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ye_vs_time}
+\caption{The evolution of the electron fraction $Y_e$ as a function of time
+in the zone with initial mass density $7.59 \times 10^9$ g/cc for the
+indicated density expansion timescales.
+}
+\label{fig:ye_vs_time}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ye_vs_rho}
+\caption{The final electron fraction $Y_e$ (100 seconds after the
+explosion) as a function of 
+initial density for the indicated density expansion timescales.
+}
+\label{fig:ye_vs_rho}
+\end{figure}
+
+\begin{figure}
+\includegraphics{c_o_ne_mg_si_vs_rho}
+\caption{The final $^{12}$C, $^{16}$O, $^{20}$Ne, $^{24}$Mg, and $^{28}$Si
+mass fractions (100 s after the
+explosion) as a function of 
+initial density.
+}
+\label{fig:c_o_ne_mg_si_vs_rho}
+\end{figure}
+
+\begin{figure}
+\includegraphics{inner_x_vs_time}
+\caption{
+The evolution of the mass fractions of several species as a function of time
+in the zone with initial mass density $7.59 \times 10^9$ g/cc for the
+$\tau = 0.1$ s expansion.
+}
+\label{fig:inner_x_vs_time}
+\end{figure}
+
+\begin{figure}
+\includegraphics{n_n_vs_time}
+\caption{
+The evolution of the neutron number density (in grams per cubic centimeter)
+in the zone with initial mass density $7.59 \times 10^6$ g/cc for the
+$\tau = 0.1$ s expansion.
+}
+\label{fig:n_n_vs_time}
+\end{figure}
+
+\begin{figure}
+\includegraphics{zr_vs_time}
+\caption{
+The evolution of the zirconium mass fractions
+in the zone with initial mass density $7.59 \times 10^6$ g/cc for the
+$\tau = 0.1$ s expansion.
+}
+\label{fig:zr_vs_time}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ti_vs_rho}
+\caption{
+The final titanium mass fractions (100 s after the explosion) as a function
+of initial density for the $\tau = 0.1$ s expansion.
+}
+\label{fig:ti_vs_rho}
+\end{figure}
+
+\begin{figure}
+\includegraphics{rho_vs_mr}
+\caption{
+The density as a function of interior mass coordinate $M_r$ for a simple
+$n = 3$, $M = 1.4\ M_\odot$ polytrope.
+}
+\label{fig:rho_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{t9_vs_mr}
+\caption{
+The peak temperature
+as a function of interior mass coordinate $M_r$ for a simple
+$n = 3$, $M = 1.4\ M_\odot$ polytrope.
+}
+\label{fig:t9_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ye_vs_mr}
+\caption{The final electron fraction $Y_e$ (100 seconds after the
+explosion) as a function of 
+enclosed mass for the indicated density expansion timescales.
+}
+\label{fig:ye_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ti_c_o_vs_mr}
+\caption{
+The titanium and $^{12}$C and $^{16}$O mass fractions in the simple
+polytrope model.
+}
+\label{fig:ti_c_o_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ti_over_vs_mr}
+\caption{
+The titanium overabundances in the simple
+polytrope model.
+}
+\label{fig:ti_over_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ca_over_vs_mr}
+\caption{
+The calcium overabundances in the simple
+polytrope model.
+}
+\label{fig:ca_over_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{cr_over_vs_mr}
+\caption{
+The chromium overabundances in the simple
+polytrope model.
+}
+\label{fig:cr_over_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{fe_over_vs_mr}
+\caption{
+The iron overabundances in the simple
+polytrope model.
+}
+\label{fig:fe_over_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{ni_over_vs_mr}
+\caption{
+The nickel overabundances in the simple
+polytrope model.
+}
+\label{fig:ni_over_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{fe_ni_vs_mr}
+\caption{
+The final iron and nickel  in the simple
+polytrope model (100 s after the explosion).
+}
+\label{fig:fe_ni_vs_mr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{sr_over_vs_mr_linear}
+\caption{
+The strontium overabundances in the simple
+polytrope model.
+}
+\label{fig:sr_over_vs_mr_linear}
+\end{figure}
+
+\begin{figure}
+\includegraphics{zr_over_vs_mr_linear}
+\caption{
+The zirconium overabundances in the simple
+polytrope model.
+}
+\label{fig:zr_over_vs_mr_linear}
+\end{figure}
+
+\begin{figure}
+\includegraphics{mo_over_vs_mr_linear}
+\caption{
+The molybdenum overabundances in the simple polytrope model.  The curves
+labeled $^{95}$Zr and $^{95}$Nb are the overabundances of $^{95}$Mo that
+would result from decay of parent $^{95}$Zr and $^{95}$Nb, respectively.
+}
+\label{fig:mo_over_vs_mr_linear}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{nrlee-anatomy}
+\caption{
+Possible anatomy of a NRLEE.
+}
+\label{fig:nrlee-anatomy}
+\end{figure}
+
+\end{document}
