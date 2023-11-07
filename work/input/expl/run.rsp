@@ -3,3 +3,4 @@
 --t_end 1.e2
 --nuc_xpath "[z <= 92]"
 --xml_steps 10
+--norm_abunds true
