@@ -6,3 +6,4 @@ model*
 *.xml
 *.gz
 *.pdf
+*.h5

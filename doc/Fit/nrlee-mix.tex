@@ -1,0 +1,453 @@
+\documentclass[preprint]{revtex4-2}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{comment}
+\newcommand{\aap}{Astron. Ap.}
+\newcommand{\apjs}{Astrophys. J. Suppl.}
+\newcommand{\gca}{Geochim. Cosmochim. Acta}
+\newcommand{\epsl}{Earth Planet. Sci. Lett.}
+
+\begin{document}
+
+\title{Mixing Relations\footnote{Supplemental material for the paper
+{\it Constraints on the building blocks of the Solar System: Insights from nucleosynthetic isotope anomalies}, XXX (2023), authors: K. Bermingham,
+B. S. Meyer, and K. Mezger, submitted}}
+\author{Bradley S. Meyer}
+\affiliation{Department of Physics and Astronomy, Clemson University, Clemson,
+SC 29634, USA}
+\author{Katherine R. Bermingham}
+\affiliation{ Department of Earth and Planetary Sciences, Rutgers University, Piscataway, NJ 08854, USA}
+\author{Klaus Mezger}
+\affiliation{Institut f\"ur Geologie, Baltzerstrasse 1+3 3012 Bern, Schweiz}
+
+\begin{abstract}
+Mixing relations for the NRLEE paper.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Derive the mixing relations.
+
+\section{Relations for Different Standards} \label{sec:initial}
+
+It is convenient to consider anomalies measured  against different standards.
+Suppose $X_i(s)$ is the mass fraction of species $i$ in sample $s$, that is,
+$X_i(s)$ is the number of grams of species $i$ in sample $s$ relative to the
+total number of grams in $s$.  Let
+\begin{equation}
+\mu_{ij}^{(a)}(s) = 10^6 \left(\frac{X_i(s)/X_i(a)}{X_j(s)/X_j(a)} - 1\right)
+\label{eq:mu_ija}
+\end{equation}
+be the anomaly in species $i$ relative to species $j$ in sample $s$
+measured against standard $a$ in parts per million.
+If $b$ is a second possible standard, then
+\begin{equation}
+\mu_{ij}^{(b)}(s) - \mu_{ij}^{(a)}(s) =
+10^6 \left(\frac{X_i(s)/X_i(b)}{X_j(s)/X_j(b)} -
+\frac{X_i(s)/X_i(a)}{X_j(s)/X_j(a)}
+\right)
+\label{eq:diff_mu}
+\end{equation}
+This may be written
+\begin{equation}
+\mu_{ij}^{(b)}(s) - \mu_{ij}^{(a)}(s) =
+10^6 \frac{X_i(s)}{X_j(s)}\frac{X_j(a)}{X_i(a)}
+\left(\frac{X_i(a)/X_i(b)}{X_j(a)/X_j(b)} - 1\right)
+\label{eq:diff_mu2}
+\end{equation}
+From the definition of $\mu_{ij}$, this becomes
+\begin{equation}
+\mu_{ij}^{(b)}(s) - \mu_{ij}^{(a)}(s) =
+\mu_{ij}^{(b)}(a) \left(1 + \frac{\mu_{ij}^{(a)}(s)}{10^6}\right)
+\label{eq:diff_mu3}
+\end{equation}
+which may be rearranged to
+\begin{equation}
+\mu_{ij}^{(b)}(s) =
+\mu_{ij}^{(a)}(s) \left(1 + \frac{\mu_{ij}^{(b)}(a)}{10^6}\right)
++ \mu_{ij}^{(b)}(a)
+\label{eq:diff_mu4}
+\end{equation}
+With this last equation, an anomaly relative to standard $b$ can be
+related to the anomaly relative to standard $a$ given knowledge of the
+abundance offset $\mu_{ij}^{(b)}(a)$ between the two standards.
+The corresponding relation for anomalies measured in per mil is
+\begin{equation}
+\delta_{ij}^{(b)}(s) =
+\delta_{ij}^{(a)}(s) \left(1 + \frac{\mu_{ij}^{(b)}(a)}{10^3}\right)
++ \mu_{ij}^{(b)}(a)
+\label{eq:diff_delta}
+\end{equation}
+
+\section{Reservoir Mixing}
+
+Suppose a sample $s$ results from the mixture of materials from two reservoirs
+1 and 2.  The resulting mass of species $i$ in $s$ can be written
+\begin{equation}
+M_i(s) = g_i(1, s) X_i(1) M(1, s) + g_i(2, s) X_i(2) M(2, s)
+\label{eq:mix1}
+\end{equation}
+$M(1, s)$ and $M(2, s)$ are the masses of reservoirs 1 and 2 contributing to the
+mixture, respectively, $X_i(r)$, with $r = 1,2$ are the mass fractions
+of species $i$ in reservoirs 1 and 2, and $g_i(1, s)$ and $g_i(2, s)$ are
+numbers
+between 0 and 1 allowing for incomplete addition of reservoir materials to
+the budget of species $i$ in sample $s$.  The total mass of sample $s$ is
+the sum of the masses of all species; thus,
+\begin{equation}
+M(s) = G(1, s) M(1, s) + G(2, s) M(2, s)
+\label{eq:mix2}
+\end{equation}
+where
+\begin{equation}
+G(r, s) = \sum_i g_i(r, s) X_i(r)
+\label{eq:G}
+\end{equation}
+for $r = 1, 2$.  Since the sum of all mass fractions in a reservoir is
+unity, $G(r, s) = 1$ if $g_i(r, s) = 1$ for all $i$.
+
+It is convenient to define $M(s) = M(1, s) + M(2, s)$ and
+$M(1, s) = f_s M(s)$.  Since
+$X_i(s) = M_i(s) / M(s)$, this results in the equation
+\begin{equation}
+X_i(s) = \frac{f_s g_i(1, s) X_i(1) + \left(1 - f_s\right) g_i(2, s) X_i(2)}{f_s G(1, s) +
+\left(1 - f_s\right) G(2, s)}
+\label{eq:XG}
+\end{equation}
+Again, if $g_i(r, s) = 1$ for all $i$, this reduces to the well-known result
+\begin{equation}
+X_i(s) = f_s X_i(1) + \left(1 - f_s\right) X_i(2)
+\label{eq:Xmix}
+\end{equation}
+From Eq. (\ref{eq:mu_ija}), an anomaly in sample $s$
+in species $i$ relative to species
+$j$ referenced to standard $a$ is given by
+\begin{equation}
+\mu_{ij}^{(a)}(s) =
+10^6 \left(\frac{f_s \left[g_i(1, s) \frac{X_i(1)}{X_i(a)} -
+g_j(1, s) \frac{X_j(1)}{X_j(a)}\right]
++
+\left(1 - f_s\right) \left[g_i(2, s)\frac{X_i(2)}{X_i(a)}
+- g_j(2, s)\frac{X_j(2)}{X_j(a)}\right]}
+{f_s g_j(1, s) \frac{X_j(1)}{X_j(a)} +
+\left(1 - f_s\right) g_j(2,s)\frac{X_j(2)}{X_j(a)}}\right)
+\label{eq:mu_g}
+\end{equation}
+In the case that $a = 2$, Eq. (\ref{eq:mu_g}) can be written
+\begin{equation}
+\mu_{ij}^{(a)}(s) =
+10^6 \left(\frac{f_s \left[g_i(1, s) \frac{X_i(1)}{X_i(a)} -
+g_j(1, s) \frac{X_j(1)}{X_j(a)}\right]
++
+\left(1 - f_s\right) \left[g_i(2, s) - g_j(2, s)\right]}
+{f_s g_j(1, s) \frac{X_j(1)}{X_j(a)} + \left(1 - f_s\right) g_j(2,s)}\right)
+\label{eq:mu_g2a}
+\end{equation}
+Furthermore,
+if $g_i(r, s) = g_j(r, s)$, as would be expected if $i$ and $j$ are isotopes
+of the same element, then Eq. (\ref{eq:mu_g2a}) becomes
+\begin{equation}
+\mu_{ij}^{(a)}(s) =
+10^6 \left(\frac{f_s \left[\frac{X_i(1)}{X_i(a)} -
+\frac{X_j(1)}{X_j(a)}\right]}
+{f_s \frac{X_j(1)}{X_j(a)} + \left(1 - f_s\right) \frac{g_j(2,s)}{g_j(1, s)}}\right)
+\label{eq:mu_g2a2}
+\end{equation}
+which reduces to the correct limits $\mu_{ij}^{(a)}(a) = 0$ for $f_s = 0$
+and $\mu_{ij}^{(a)}(s) = \mu_{ij}^{(a)}(1)$ for $f_s = 1$.
+
+\section{A Derived Standard}
+
+If a known standard $a$ is the result of the mixture of two reservoirs 1 and 2,
+it is possible to eliminate the mass fraction of species in reservoir 2
+and express the resulting mixtures in terms of reservoir 1 and the standard.
+By Eq. (\ref{eq:XG}), one may write
+\begin{equation}
+\frac{f_a G(1, a) + \left(1 - f_a\right) G(2, a)}{\left(1 - f_a\right) g_i(2, a)}
+X_i(a)
+= \frac{f_a g_i(1, a)}{\left(1 - f_a\right) g_i(2, a)} X_i(1) + X_i(2)
+\label{eq:XGa}
+\end{equation}
+For sample $s$, one may similarly write
+\begin{equation}
+\frac{f_s G(1, s) + \left(1 - f_s\right) G(2, s)}{\left(1 - f_s\right) g_i(2, s)}
+X_i(s)
+= \frac{f_s g_i(1, s)}{\left(1 - f_s\right) g_i(2, s)} X_i(1) + X_i(2)
+\label{eq:XGs}
+\end{equation}
+If one subtracts Eq. (\ref{eq:XGa}) from Eq. (\ref{eq:XGs}), one finds
+\begin{multline}
+\frac{f_s G(1, s) + \left(1 - f_s\right) G(2, s)}{\left(1 - f_s\right) g_i(2, s)}
+X_i(s)
+-
+\frac{f_a G(1, a) + \left(1 - f_a\right) G(2, a)}{\left(1 - f_a\right) g_i(2, a)}
+X_i(a)
+= \\
+X_i(1) \left(
+\frac{f_s g_i(1, s)}{\left(1 - f_s\right) g_i(2, s)}
+- \frac{f_a g_i(1, a)}{\left(1 - f_a\right) g_i(2, a)}\right)
+\label{eq:XGdiff}
+\end{multline}
+This may be rewritten
+\begin{multline}
+\frac{X_i(s)}{X_i(a)}
+=
+\left[
+\frac{(1 - f_s) g_i(2, s)}{(1 - f_a) g_i(2, a)}
++
+A_i(a)\frac{X_i(1)}{X_i(a)}
+\left\{
+\frac{f_s g_i(1, s)}{f_a g_i(1, a)}
+- \frac{\left(1 - f_s\right) g_i(2, s)}{\left(1 - f_a\right) g_i(2, a)}\right\}
+\right]
+\\
+\left[\frac{f_a G(1, a) + (1 - f_a) G(2,a)}{f_s G(1, s) + (1 - f_s) G(2,s)}\right]
+\label{eq:XGdiff2}
+\end{multline}
+with
+\begin{equation}
+A_i(a) = \frac{f_a g_i(1, a)}{f_a G(1, a) + (1 - f_a) G(2,a)}
+\label{eq:A}
+\end{equation}
+It is convenient to write the mass fraction ratio
+\begin{equation}
+\frac{X_i(s)}{X_i(a)} = N(s, a) B_i(s, a)
+\label{eq:Xi}
+\end{equation}
+where the normalization for sample $s$ and standard $a$ is
+\begin{equation}
+N(s, a) = \frac{f_a G(1, a) + (1 - f_a) G(2,a)}{f_s G(1, s) + (1 - f_s) G(2,s)}
+\label{eq:norm}
+\end{equation}
+and the species specific quantity $B_i(s, a)$ is given by
+\begin{equation}
+B_i(s, a) = 
+\frac{(1 - f_s) g_i(2, s)}{(1 - f_a) g_i(2, a)}
++
+A_i(a) \frac{X_i(1)}{X_i(a)}
+\left\{
+\frac{f_s g_i(1, s)}{f_a g_i(1, a)}
+- \frac{\left(1 - f_s\right) g_i(2, s)}{\left(1 - f_a\right) g_i(2, a)}\right\}
+\label{eq:Bi}
+\end{equation}
+Analogous equations hold for species $j$.
+Because $N(s, a)$ is species independent,
+\begin{equation}
+\mu_{ij}^{(a)} = 10^6 \left(\frac{B_i(s, a)}{B_j(s, a)} - 1\right)
+\label{eq:mu_ij_derived}
+\end{equation}
+It is clear from Eq. (\ref{eq:Bi}) that if $s = a$, $B_i(a, a) = B_j(a, a) = 1$,
+and $\mu_{ij}^{(a)} = 0$, as expected.
+
+It is convenient to define
+\begin{equation}
+\delta f = f_s - f_a
+\label{eq:deltaf}
+\end{equation}
+With this definition, Eq. (\ref{eq:Bi}) becomes
+\begin{equation}
+B_i(s, a) = 
+\frac{g_i(2, s)}{g_i(2, a)}\left(1 - \frac{\delta f}{1 - f_a}\right)
++
+A_i(a)\frac{X_i(1)}{X_i(a)}
+\left\{
+\frac{g_i(1, s)}{g_i(1, a)}\left(1 + \frac{\delta f}{f_a}\right)
+- \frac{g_i(2, s)}{g_i(2, a)}\left(1 - \frac{\delta f}{1 - f_a}\right)\right\}
+\label{eq:Bi2}
+\end{equation}
+In the case that there is no species selectivity in forming standard $a$,
+$g_i(r, a) = 1$ for all $i$ and $r$.  With this approximation,
+$G(1, a) = G(2, a) = 1$, $A_i(a) \to f_a$, and
+Eq. (\ref{eq:Bi}) becomes
+\begin{equation}
+B_i(s, a) = 
+g_i(2, s)\left(1 - \frac{\delta f}{1 - f_a}\right)
++
+f_a \frac{X_i(1)}{X_i(a)}
+\left\{
+g_i(1, s)\left(1 + \frac{\delta f}{f_a}\right)
+- g_i(2, s)\left(1 - \frac{\delta f}{1 - f_a}\right)\right\}
+\label{eq:Bi3}
+\end{equation}
+If there is also no species selectivity in forming sample $s$, then
+$g_i(r, s) = 1$ for all $i$ and $r$ and
+Eq. (\ref{eq:Bi}) becomes
+\begin{equation}
+B_i(s, a) = 1 + \frac{\delta f}{1 - f_a} \left(\frac{X_i(1)}{X_i(a)} - 1\right)
+\label{eq:Bi4}
+\end{equation}
+
+\section{Simple Model for the NC-CC Dichotomy}
+
+A plausible model for the origin of the NC-CC dichotomy is that CC
+region in the early Solar System  contained a higher concentration of NRLEE
+dust than the NC region.  This could occur if NRLEE dust preferentially
+aggregated into larger dust grains in the NC region and then largely
+spiraled into the Sun.  NC compositions would thus arise from mixes
+with a lower concentration of NRLEE dust than CC material.
+
+Consider that $CI$ composition reflects the composition of the molecular
+cloud (MC) from which the Solar System formed; thus, let $a = CI = MC$ and
+$f_{CI}$ is the mass fraction of NRLEE dust in the molecular cloud dust.
+Reservoir 1 is the NRLEE dust (denoted $N$) and reservoir 2 is the
+complement to the NRLEE dust (denoted $\bar{N}$),
+that is, all the dust that is not NRLEE dust.
+With the assumption that there is no species selectivity in forming a
+sample $s$ with a different concentration $f_s$ of NRLEE dust, one finds
+from Eq. (\ref{eq:Bi4})
+\begin{equation}
+B_i(s, CI) = 1 + \frac{\delta f}{1 - f_{CI}}
+\left(\frac{X_i(N)}{X_i(MC)} - 1\right)
+\label{eq:BiCI}
+\end{equation}
+with $\delta f = f_s - f_{CI}$.  A similar equation holds for species $j$.
+An anomaly relative to $CI$ as the standard is then,
+by Eq. (\ref{eq:mu_ij_derived_ci}),
+\begin{equation}
+\mu_{ij}^{(CI)}(s) = 10^6 \left(\frac{B_i(s, CI)}{B_j(s, CI)} - 1\right)
+\label{eq:mu_ij_derived_ci}
+\end{equation}
+By Eq. (\ref{eq:diff_mu4}),
+the anomaly relative to a terrestrial standard ($b = \oplus$) is 
+\begin{equation}
+\mu_{ij}^{(\oplus)}(s) = 10^6 \left(\frac{B_i(s, CI)}{B_j(s, CI)} - 1\right)
+\left(1 + \frac{\mu_{ij}^{(\oplus)}(CI)}{10^6}\right)
++ \mu_{ij}^{(\oplus)}(CI)
+\label{eq:mu_ij_derived_earth}
+\end{equation}
+
+A few reasonable approximations yield further insight.  First, the GCE
+models in this work indicate $f_{CI} \approx 10^{-4}$; thus, $f_{CI} \ll 1$
+and may be neglected in Eq. (\ref{eq:BiCI}).
+Second, terms including $\delta f$ are small and may
+be expanded in a binomial approximation ($(1 + x)^p \approx 1 + px$ for
+$\vert x \vert < 1$).
+Finally, for species of interest in this work,
+$\mu_{ij}^{(\oplus)}(CI) \approx 200$, so
+$\mu_{ij}^{(\oplus)}(CI)/10^6 \approx 2\times 10^{-4}$,
+which may be neglected compared to unity.
+Thus, Eq. (\ref{eq:mu_ij_derived_earth}) becomes
+\begin{equation}
+\mu_{ij}^{(\oplus)}(s) \approx \delta f_6
+\left(\frac{X_i(N)}{X_i(MC)} - \frac{X_j(N)}{X_j(MC)}\right)
++ \mu_{ij}^{(\oplus)}(CI)
+\label{eq:mu_ij_derived_earth2}
+\end{equation}
+where $\delta f = \delta f_6 \times 10^{-6}$;
+that is, $\delta f_6$ is the ppm deviation in
+the contribution of NRLEE dust to the sample compared to the NRLEE dust
+contribution to CI.  In this model, then, anomalies scale close to linearly
+with varying contribution of NRLEE dust.  Furthermore, if NRLEE dust is
+more enriched in species $i$ than species $j$ relative to the average
+Solar composition ($MC$), then samples depleted in NRLEE dust
+($\delta_6 < 0$) will show anomalies closer to NC than CC composition.
+For example, for GCE models in this work, $X_i(N)/X_i(MC) \approx 1000$
+for $i = {^{50}{\rm Ti}}$ and $X_j(N)/X_j(MC) \approx 20$ for
+$j = {^{47}{\rm Ti}}$;
+thus, since $\mu^{50}{\rm Ti}(CI) \approx 200$, $\delta f_6 \approx -0.2$
+to obtain the Earth's composition relative to $CI$.
+Since $f_{CI} \approx 10^{-4}$,
+$\delta f_6 = -0.2$ corresponds to an approximate 2 per mil
+deficit in NRLEE in NC material relative to $CI$.
+
+\section{CAI-Like Material}
+
+Concentration of refractory material from NRLEE and complementary dust
+gives rise to CAI-like material.  In the present model, the mass fraction
+of a species $i$ in the CAI-like material relative to CI is,
+from Eq. (\ref{eq:Xi}),
+\begin{equation}
+\frac{X_i(CAI)}{X_i(CI)} = N(CAI, CI) B_i(CAI, CI) 
+\label{eq:Xi_cai}
+\end{equation}
+If the fraction of NRLEE dust going into the CAI-like material is
+$f_{CAI}$ and $\delta f = f_{CAI} - f_{CI}$, then Eq. (\ref{eq:Bi3})
+becomes
+\begin{equation}
+B_i(CAI, CI) = \\  
+g_i(\bar{N}, CAI)\left(\frac{1 - f_{CAI}}{1 - f_{CI}}\right)
+\left(1 + C_i \frac{X_i(N)}{X_i(MC)}\right)
+\label{eq:BiCAI}
+\end{equation}
+where
+\begin{equation}
+C_i = f_{CAI} \left[\frac{g_i(N, CAI)}{g_i(\bar{N}, CAI)}
+\left(\frac{1 - f_{CI}}{1 - f_{CAI}}\right) - \frac{f_{CI}}{f_{CAI}}\right]
+\label{eq:C}
+\end{equation}
+
+An anomaly in the CAI-like material relative to CI is
+\begin{equation}
+\mu_{ij}^{(CI)}(CAI) = 10^6 \left(\frac{X_i(N)/X_i(MC)}{X_j(N)/X_j(MC)} - 1
+\right) = 10^6 \left(\frac{B_i(CAI, CI) - B_j(CAI, CI)}{B_j(CAI, CI)}\right)
+\label{eq:mu_cai}
+\end{equation}
+Now with the assumption of no isotope selectivity for the same element,
+$g_i(r, CAI) = g_j(r, CAI)$ for $r = N$ or $\bar{N}$; hence, $C_i = C_j$.
+In this case,
+\begin{equation}
+\mu_{ij}^{(CI)}(CAI) = 10^6 C_i
+\left(\frac{X_i(N)}{X_i(MC)} - \frac{X_j(N)}{X_j(MC)}\right)
+\left(1 + C_i \frac{X_j(N)}{X_j(MC)}\right)^{-1}
+\label{eq:mu_cai_prop}
+\end{equation}
+and, if $X_i(N)/X_i(MC) > X_j(N)/X_j(MC)$,
+ the sign of the anomaly relative to CI will be given by the sign of $C_i$.
+Since $f_{CI} \ll 1$ and $f_{CAI} \ll 1$,
+$\mu_{ij}^{(CI)}(CAI) < 0$ for
+\begin{equation}
+\frac{g_i(N, CAI)}{g_i(\bar{N}, CAI)} < \frac{f_{CI}}{f_{CAI}}
+\label{eq:ratio_cai}
+\end{equation}
+
+\section{A Simple Model for Compositional Variation in CC Materials}
+
+A model for the compositional variation in CC materials is that CAI-like
+matter, formed in the inner Solar disk, gets transported to the CC region
+and mixes with the initial molecular cloud material (with CI composition).
+Thus, CC material is a mix of reservior 1 (CAI-like matter--denoted CAI)
+with CI.
+From Eq. (\ref{eq:mu_g2a2}), and with neglect of species selectivity,
+the anomaly in CC sample $s$ is
+\begin{equation}
+\mu_{ij}^{(CI)}(s) =
+10^6 \left(\frac{f_s \left[\frac{X_i(CAI)}{X_i(CI)} -
+\frac{X_j(CAI)}{X_j(CI)}\right]}
+{f_s \frac{X_j(CAI)}{X_j(CI)} + \left(1 - f_s\right)}\right)
+\label{eq:mu_g_cai}
+\end{equation}
+Here $f_s$ is the fraction of the mass of the final CC material contributed
+by the CAI-like matter.
+This equation may be written
+\begin{equation}
+\mu_{ij}^{(CI)}(s) =
+10^6 \left(\frac{f_{sj}}{1 - f_s + f_{sj}}\right)
+\left(\frac{X_i(CAI)/X_i(CI)}{X_j(CAI)/X_j(CI)} - 1\right)
+\label{eq:mu_g_cai2}
+\end{equation}
+where
+\begin{equation}
+f_{sj} = \frac{X_j(CAI)}{X_j(CI)} f_s
+\label{eq:fsj}
+\end{equation}
+which is now a species specific quantity.
+Thus,
+\begin{equation}
+\mu_{ij}^{(CI)}(s) =
+\left(\frac{f_{sj}}{1 - f_s + f_{sj}}\right) \mu_{ij}^{(CI)}(CAI)
+\label{eq:mu_g_cai3}
+\end{equation}
+If $f_s = 0$, there is no contribution
+from the CAI-like material, and $\mu_{ij}^{(CI)}(s) = 0$, as expected.
+If $f_s = 1$, $\mu_{ij}^{(CI)}(s) = \mu_{ij}^{(CI)}(CAI)$, which makes
+sense because the mixture only includes CAI-like matter.
+It is also possible for $\mu_{ij}^{(CI)}(s) \approx \mu_{ij}^{(CI)}(CAI)$ even
+when $f_s < 1$ if $X_j(CAI) / X_j(CI) \gg 1$ so
+that $f_{sj} \gg 1$ because, in this
+case, species $j$ is highly enriched in the CAI-like material relative to
+CI.
+
+\end{document}
+

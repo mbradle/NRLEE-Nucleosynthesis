@@ -1,0 +1,7 @@
+figures
+data
+python
+*.bbl
+*.blg
+*.log
+*.pdf

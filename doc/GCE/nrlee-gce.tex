@@ -1,0 +1,139 @@
+\documentclass[preprint]{revtex4-2}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{comment}
+\newcommand{\aap}{Astron. Ap.}
+\newcommand{\apjs}{Astrophys. J. Suppl.}
+\newcommand{\gca}{Geochim. Cosmochim. Acta}
+\newcommand{\epsl}{Earth Planet. Sci. Lett.}
+
+\begin{document}
+
+\title{NRLEE Galactic Chemical Evolution\footnote{Supplemental material for the paper
+{\it Constraints on the building blocks of the Solar System: Insights from nucleosynthetic isotope anomalies}, GCA (2021), authors: K. Bermingham,
+B. S. Meyer, and K. Mezger, submitted}}
+\author{Bradley S. Meyer}
+\affiliation{Department of Physics and Astronomy, Clemson University, Clemson,
+SC 29634, USA}
+\author{Katherine R. Bermingham}
+\affiliation{ Department of Earth and Planetary Sciences, Rutgers University, Piscataway, NJ 08854, USA}
+\author{Klaus Mezger}
+\affiliation{Institut f\"ur Geologie, Baltzerstrasse 1+3 3012 Bern, Schweiz}
+
+\begin{abstract}
+Readers may explore the results of this model in more detail via Jupyter
+notebooks available at \url{http://webnucleo.org}.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+\section{Galactic Chemical Model} \label{sec:initial}
+
+\section{Inferred Anomalies} \label{sec:polytrope}
+
+\section{Jupyter Notebooks} \label{sec:jupyter}
+
+Readers who wish to study the above results in 
+more detail are encouraged to explore the Jupyter notebooks accompanying
+the Webnucleo projects used to construct the simple NRLEE model presented
+here.  The notebooks allow a user to download and graph data interactively.
+Input parameters can be changed, and figures and tables saved.  The
+notebooks run on Google Colab (\url{https://colab.research.google.com)} or
+Binder (\url{https://mybinder.org}).  They can also be downloaded and run
+on a local computer.
+
+The notebooks relevant for the model presented here are:
+\begin{itemize}
+\item Mainline-nucleosynthesis: \url{https://github.com/mbradle/mainline-nucleosynthesis}
+\item simple\_s\_process: \url{https://github.com/mbradle/simple_s_process}
+\item NRLEE-Nucleosynthesis: \url{https://github.com/mbradle/NRLEE-Nucleosynthesis}
+\end{itemize}
+All of these notebooks are part of the Webnucleo Project
+(\url{http://webnucleo.org}).
+
+\section{Conclusion}
+
+\bibliography{clemson}
+
+\begin{figure}
+\includegraphics{figures/gas_frac}
+\caption{The dust and gas fraction as a function of Galactic time in the model.}
+\label{fig:gas_frac}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/dust_mass}
+\caption{The mass in various dust components.}
+\label{fig:dust}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/x}
+\caption{The mass fractions of species in the molecular cloud phase of the model
+as a function of Galactic time.}
+\label{fig:x}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/ca}
+\caption{The anomailes in Ca.}
+\label{fig:ca}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/ti}
+\caption{The anomailes in Ti.}
+\label{fig:ti}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/cr}
+\caption{The anomailes in Cr.}
+\label{fig:cr}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/fe}
+\caption{The anomailes in Fe.}
+\label{fig:fe}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/ni}
+\caption{The anomailes in Ni.}
+\label{fig:ni}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/ca48_ti50}
+\caption{The correlated anomalies in $^{48}$Ca and $^{50}$Ti.}
+\label{fig:ca48_ti50}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/ti46_ca48}
+\caption{The correlated anomalies in $^{46}$Ti and $^{48}$Ca.}
+\label{fig:ti46_ca48}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/ti46_ti50}
+\caption{The correlated anomalies in $^{46}$Ti and $^{50}$Ti.}
+\label{fig:ti46_ti50}
+\end{figure}
+
+\begin{figure}
+\includegraphics{figures/cr54_ti50}
+\caption{The correlated anomalies in $^{54}$Cr and $^{50}$Ti.}
+\label{fig:cr54_ti50}
+\end{figure}
+
+%\begin{figure}
+%\includegraphics{figures/ni64_cr54}
+%\caption{The correlated anomalies in $^{54}$Cr and $^{64}$Ni.}
+%\label{fig:cr54_ni64}
+%\end{figure}
+
+\end{document}
