@@ -108,15 +108,18 @@ G(r, s) = \sum_i g_i(r, s) X_i(r)
 for $r = 1, 2$.  Since the sum of all mass fractions in a reservoir is
 unity, $G(r, s) = 1$ if $g_i(r, s) = 1$ for all $i$.
 
-It is convenient to define $M(s) = M(1, s) + M(2, s)$ and
-$M(1, s) = f_s M(s)$.  Since
+It is convenient to define $M_0(s) = M(1, s) + M(2, s)$ as the original
+amount of mass drawn to create the sample before selective species loss and
+to define
+$M(1, s) = f_s M_0(s)$.  Since
 $X_i(s) = M_i(s) / M(s)$, this results in the equation
 \begin{equation}
 X_i(s) = \frac{f_s g_i(1, s) X_i(1) + \left(1 - f_s\right) g_i(2, s) X_i(2)}{f_s G(1, s) +
 \left(1 - f_s\right) G(2, s)}
 \label{eq:XG}
 \end{equation}
-Again, if $g_i(r, s) = 1$ for all $i$, this reduces to the well-known result
+Again, if $g_i(r, s) = 1$ for all $i$ and for $r = 1,2$,
+this reduces to the well-known result
 \begin{equation}
 X_i(s) = f_s X_i(1) + \left(1 - f_s\right) X_i(2)
 \label{eq:Xmix}
@@ -380,8 +383,7 @@ C_i = f_{CAI} \left[\frac{g_i(N, CAI)}{g_i(\bar{N}, CAI)}
 
 An anomaly in the CAI-like material relative to CI is
 \begin{equation}
-\mu_{ij}^{(CI)}(CAI) = 10^6 \left(\frac{X_i(N)/X_i(MC)}{X_j(N)/X_j(MC)} - 1
-\right) = 10^6 \left(\frac{B_i(CAI, CI) - B_j(CAI, CI)}{B_j(CAI, CI)}\right)
+\mu_{ij}^{(CI)}(CAI) = 10^6 \left(\frac{B_i(CAI, CI) - B_j(CAI, CI)}{B_j(CAI, CI)}\right)
 \label{eq:mu_cai}
 \end{equation}
 Now with the assumption of no isotope selectivity for the same element,
