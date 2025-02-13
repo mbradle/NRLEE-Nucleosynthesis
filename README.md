@@ -10,6 +10,8 @@ NRLEE GCE:  Study the evolution of NRLEE dust in a GCE model.  [![Open In Colab]
 
 Data:  Study the NC/CC Planetary model data.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mbradle/NRLEE-Nucleosynthesis/blob/kath/props.ipynb)
 
+Data averaging:  Average the Planetary model data.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mbradle/NRLEE-Nucleosynthesis/blob/kath/data_averaging.ipynb)
+
 NRLEE Fit:  Study a NRLEE-based model for the origin of the CC/NC dichotomy.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mbradle/NRLEE-Nucleosynthesis/blob/kath/nrlee_fit.ipynb)
 
 It is also possible to run the notebook on [Binder](https://mybinder.org).  To do so, click on the badge at the end of this paragraph.  Due to memory limitations on Binder, the notebook does not yet run optimally on this platform, so we currently recommend using Colab. [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mbradle/NRLEE-Nucleosynthesis/HEAD)
